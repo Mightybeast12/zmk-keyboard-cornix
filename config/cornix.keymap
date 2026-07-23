@@ -148,10 +148,10 @@
         base_layer {
             display-name = "Base";
             bindings = <
-&kp GRAVE  &kp Q             &kp W             &kp F                     &kp P          &kp G                    &kp J              &kp L          &kp U         &kp Y           &kp SEMI        &kp GRAVE
-&kp PLUS   &hm_l LEFT_WIN A  &hm_l LEFT_ALT R  &hm_shift_l LEFT_SHIFT S  &hm_l LCTRL T  &kp D                    &kp H              &kp N          &kp E         &kp I           &kp O           &kp GRAVE
-&kp EQUAL  &kp Z             &kp X             &kp C                     &kp V          &kp B      &kp B  &kp K  &kp K              &kp M          &kp COMMA     &kp DOT         &kp UP_ARROW    &kp GRAVE
-&kp MINUS  &kp C             &kp V             &hyper 2 ESC              &hyper 1 TAB   &kp SPACE                &hyper ENTER CAPS  &hyper 3 BSPC  &hyper 4 DEL  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
+&kp GRAVE  &kp Q             &kp W             &kp F                     &kp P          &kp G                    &kp J              &kp L       &kp U      &kp Y           &kp SEMI        &kp GRAVE
+&kp PLUS   &hm_l LEFT_WIN A  &hm_l LEFT_ALT R  &hm_shift_l LEFT_SHIFT S  &hm_l LCTRL T  &kp D                    &kp H              &kp N       &kp E      &kp I           &kp O           &kp GRAVE
+&kp EQUAL  &kp Z             &kp X             &kp C                     &kp V          &kp B      &kp B  &kp K  &kp K              &kp M       &kp COMMA  &kp DOT         &kp UP_ARROW    &kp GRAVE
+&kp MINUS  &kp C             &kp V             &lt 2 ESC                 &lt 1 TAB      &kp SPACE                &hyper ENTER CAPS  &lt 3 BSPC  &lt 4 DEL  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
