@@ -4,18 +4,17 @@
  * SPDX-License-Identifier: MIT
  */
 
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 15
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 15
 #include <dt-bindings/zmk/pointing.h>
 
 #define HM_TAPPING_TERM 250
 #define HM_TAPPING_TERM_FAST 200
 #define HM_PRIOR_IDLE 70
-
 #define BASE 0
 #define SYMBOLS 1
 #define NUM_NAV 2
@@ -27,6 +26,7 @@
 #define WINDOWS 8
 
 /* Main-hand positions exclude the six thumbs so positional hold-taps stay handed. */
+
 #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 30 38 39 40
 #define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 31 32 33 34 35 36 37 47 48 49
 #define THUMBS 41 42 43 44 45 46
@@ -56,6 +56,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
+
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
@@ -68,6 +69,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
+
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
@@ -77,10 +79,12 @@
         };
 
         /* Faster tapping term for the shift home-row mods. */
+
         hm_shift_l: homerow_shift_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
+
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM_FAST>;
             quick-tap-ms = <200>;
@@ -93,6 +97,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
+
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM_FAST>;
             quick-tap-ms = <200>;
@@ -105,6 +110,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
+
             flavor = "hold-preferred";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
@@ -115,10 +121,12 @@
          * hold action, so a hold-tap reproduces the tap/hold split with the
          * original 150 ms term.
          */
+
         td0: tap_dance_0_enter_caps {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <0>;
             bindings = <&kp CAPS>, <&kp RET>;
+
             flavor = "tap-preferred";
             tapping-term-ms = <150>;
             quick-tap-ms = <150>;
@@ -161,105 +169,126 @@
         base_layer {
             display-name = "Base";
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&kp PLUS  &kp Q  &kp W  &kp F  &kp P  &kp G  &kp J  &kp L  &kp U  &kp Y  &kp SEMI  &td1
-&kp Z  &hm_l LGUI A  &hm_l LALT R  &hm_shift_l LSHFT S  &hm_l LCTRL T  &kp D  &kp B  &kp K  &kp H  &hm_r RCTRL N  &hm_shift_r RSHFT E  &hm_r RALT I  &hm_r RGUI O  &kp GRAVE
-&kp X  &kp C  &kp V  &lt 2 ESC  &lt 1 TAB  &kp SPACE  &td0  &lt 3 BSPC  &lt 4 DEL  &kp M  &td2  &td3
+&none     &kp Q         &kp W         &kp F                &kp P          &kp G                    &kp J  &kp L          &kp U                &kp Y         &kp SEMI      &kp GRAVE
+&kp PLUS  &kp Q         &kp W         &kp F                &kp P          &kp G                    &kp J  &kp L          &kp U                &kp Y         &kp SEMI      &td1
+&kp Z     &hm_l LGUI A  &hm_l LALT R  &hm_shift_l LSHFT S  &hm_l LCTRL T  &kp D      &kp B  &kp K  &kp H  &hm_r RCTRL N  &hm_shift_r RSHFT E  &hm_r RALT I  &hm_r RGUI O  &kp GRAVE
+&kp X     &kp C         &kp V         &lt 2 ESC            &lt 1 TAB      &kp SPACE                &td0   &lt 3 BSPC     &lt 4 DEL            &kp M         &td2          &td3
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         symbols_layer {
             display-name = "Symbols";
+
             /* The dropped outer punctuation (= - / colon # ISO-hash) lives here. */
+
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&trans  &kp LT  &kp CARET  &kp GT  &kp AT  &kp STAR  &kp AMPS  &kp LBKT  &kp RBKT  &kp PRCNT  &none  &none
-&trans  &hm_l LGUI HOME  &hm_l LALT PG_DN  &hm_shift_l LSHFT PG_UP  &hm_l LCTRL END  &kp LA(N3)  &kp DQT  &kp PIPE  &kp EXCL  &kp LPAR  &kp RPAR  &hm_r RALT GRAVE  &none  &none
-&kp FSLH  &kp UNDER  &kp NON_US_BSLH  &trans  &trans  &trans  &trans  &trans  &trans  &kp LBRC  &kp RBRC  &kp DOT
+&none     &none            &none             &none                    &none            &none                          &none     &none     &none     &none             &none     &none
+&trans    &kp LT           &kp CARET         &kp GT                   &kp AT           &kp STAR                       &kp AMPS  &kp LBKT  &kp RBKT  &kp PRCNT         &none     &none
+&trans    &hm_l LGUI HOME  &hm_l LALT PG_DN  &hm_shift_l LSHFT PG_UP  &hm_l LCTRL END  &kp LA(N3)  &kp DQT  &kp PIPE  &kp EXCL  &kp LPAR  &kp RPAR  &hm_r RALT GRAVE  &none     &none
+&kp FSLH  &kp UNDER        &kp NON_US_BSLH   &trans                   &trans           &trans                         &trans    &trans    &trans    &kp LBRC          &kp RBRC  &kp DOT
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         numbers_navigation_layer {
             display-name = "Numbers/Nav";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&kp PAUSE_BREAK  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
-&trans  &hm_l LGUI HOME  &hm_l LALT PG_DN  &hm_shift_l LSHFT PG_UP  &hm_l LCTRL END  &trans  &trans  &none  &none  &hm_r RCTRL LEFT  &hm_shift_r RSHFT DOWN  &hm_r RALT UP  &hm_r RGUI RIGHT  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp UP
+&trans           &trans           &trans            &trans                   &trans           &trans                 &trans  &trans            &trans                  &trans         &trans            &trans
+&kp PAUSE_BREAK  &kp N1           &kp N2            &kp N3                   &kp N4           &kp N5                 &kp N6  &kp N7            &kp N8                  &kp N9         &kp N0            &trans
+&trans           &hm_l LGUI HOME  &hm_l LALT PG_DN  &hm_shift_l LSHFT PG_UP  &hm_l LCTRL END  &trans  &trans  &none  &none   &hm_r RCTRL LEFT  &hm_shift_r RSHFT DOWN  &hm_r RALT UP  &hm_r RGUI RIGHT  &trans
+&trans           &trans           &trans            &trans                   &trans           &trans                 &trans  &trans            &trans                  &kp LEFT       &kp DOWN          &kp UP
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         functions_layer {
             display-name = "Functions";
+
             /* Vial dynamic record/play keys have no ZMK runtime equivalent, so they are none. */
+
             bindings = <
-&bootloader  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bootloader
-&trans  &none  &none  &none  &none  &none  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &hm_l RGUI F2  &hm_l LALT F3  &hm_shift_l LSHFT F4  &hm_l LCTRL F5  &kp F6  &trans  &trans  &kp F7  &hm_r RCTRL F8  &hm_shift_r RSHFT F9  &hm_r LALT F10  &hm_r RGUI F11  &kp F12
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&bootloader  &trans         &trans         &trans                &trans          &trans                  &trans  &trans          &trans                &trans          &trans          &bootloader
+&trans       &none          &none          &none                 &none           &none                   &trans  &trans          &trans                &trans          &trans          &trans
+&trans       &hm_l RGUI F2  &hm_l LALT F3  &hm_shift_l LSHFT F4  &hm_l LCTRL F5  &kp F6  &trans  &trans  &kp F7  &hm_r RCTRL F8  &hm_shift_r RSHFT F9  &hm_r LALT F10  &hm_r RGUI F11  &kp F12
+&trans       &trans         &trans         &trans                &trans          &trans                  &trans  &trans          &trans                &trans          &trans          &trans
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         mouse_media_layer {
             display-name = "Mouse/Media";
+
             /* Vial raw 0x7c76 is unresolved and intentionally left as none. */
+
             bindings = <
-&none  &trans  &trans  &trans  &trans  &kp PSCRN  &kp K_SLEEP  &trans  &trans  &trans  &trans  &tog 5
-&kp CAPS  &mkp MB1  &mmv MOVE_UP  &mkp MB2  &trans  &kp C_VOL_UP  &trans  &trans  &kp C_PP  &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &kp C_MUTE  &kp C_VOL_DN  &trans  &trans  &kp C_PREV  &kp C_STOP  &kp C_NEXT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&none     &trans          &trans          &trans           &trans  &kp PSCRN                           &kp K_SLEEP  &trans      &trans      &trans      &trans  &tog 5
+&kp CAPS  &mkp MB1        &mmv MOVE_UP    &mkp MB2         &trans  &kp C_VOL_UP                        &trans       &trans      &kp C_PP    &trans      &trans  &trans
+&trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &kp C_MUTE    &kp C_VOL_DN  &trans  &trans       &kp C_PREV  &kp C_STOP  &kp C_NEXT  &trans  &trans
+&trans    &trans          &trans          &trans           &trans  &trans                              &trans       &trans      &trans      &trans      &trans  &trans
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         plain_base_layer {
             display-name = "Plain Base";
+
             /* Vial layer 5: same alphas without home-row mods, for gaming. */
+
             bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS
-&kp PLUS  &kp Q  &kp W  &kp F  &kp P  &kp G  &kp J  &kp L  &kp U  &kp Y  &kp SEMI  &kp SQT
-&kp Z  &kp A  &kp R  &kp S  &kp T  &kp D  &kp B  &kp K  &kp H  &kp N  &kp E  &kp I  &kp O  &kp NON_US_HASH
-&kp X  &kp C  &kp V  &tog 5  &kp TAB  &kp SPACE  &kp RET  &kp BSPC  &kp DEL  &kp M  &kp COMMA  &kp DOT
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4   &kp N5                   &kp N6   &kp N7    &kp N8   &kp N9  &kp N0     &kp MINUS
+&kp PLUS   &kp Q   &kp W   &kp F   &kp P    &kp G                    &kp J    &kp L     &kp U    &kp Y   &kp SEMI   &kp SQT
+&kp Z      &kp A   &kp R   &kp S   &kp T    &kp D      &kp B  &kp K  &kp H    &kp N     &kp E    &kp I   &kp O      &kp NON_US_HASH
+&kp X      &kp C   &kp V   &tog 5  &kp TAB  &kp SPACE                &kp RET  &kp BSPC  &kp DEL  &kp M   &kp COMMA  &kp DOT
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         adjust_hardware_layer {
             display-name = "Adjust/Hardware";
+
             /* Target-only controls retained from the original Cornix config. */
+
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none  &none  &none  &none  &none  &none
-&bt BT_CLR_ALL  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &tog WINDOWS  &to BASE  &none  &none  &none  &mo DEBUG
-&ext_power EP_ON  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR        &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4                 &none         &none     &none   &none   &none   &none
+&bt BT_CLR_ALL    &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4                &tog WINDOWS  &to BASE  &none   &none   &none   &mo DEBUG
+&ext_power EP_ON  &none          &none          &none          &none          &none          &none  &none  &none         &none     &none   &none   &none   &none
+&trans            &trans         &trans         &trans         &trans         &trans                       &trans        &trans    &trans  &trans  &trans  &trans
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         debug_bootloader_layer {
             display-name = "Debug/Bootloader";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none  &none  &none  &none  &none  &bt BT_CLR_ALL
-&bt BT_CLR_ALL  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &none  &to BASE  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &bootloader  &none  &none  &bootloader  &none  &none  &none  &none  &none
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR      &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4                 &none        &none     &none   &none   &none   &bt BT_CLR_ALL
+&bt BT_CLR_ALL  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4                &none        &to BASE  &none   &none   &none   &none
+&none           &none          &none          &none          &none          &bootloader    &none  &none  &bootloader  &none     &none   &none   &none   &none
+&trans          &trans         &trans         &trans         &trans         &trans                       &trans       &trans    &trans  &trans  &trans  &trans
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         windows_overlay_layer {
             display-name = "Windows";
+
             /* Transparent Base overlay: swaps GUI/Control on the pinky home keys. */
+
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&kp LGUI  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &hm_l LCTRL A  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &hm_r RCTRL O  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans         &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans         &trans
+&kp LGUI  &trans         &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans         &trans
+&trans    &hm_l LCTRL A  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &hm_r RCTRL O  &trans
+&trans    &trans         &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans         &trans
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
     };
