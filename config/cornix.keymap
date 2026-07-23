@@ -106,13 +106,13 @@
             hold-trigger-on-release;
         };
 
-        lt: layer_tap {
+        hyper: layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&mo>, <&kp>;
+            bindings = <&sk>, <&kp>;
 
-            flavor = "hold-preferred";
-            tapping-term-ms = <HM_TAPPING_TERM>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
             quick-tap-ms = <200>;
         };
 
@@ -121,37 +121,6 @@
          * hold action, so a hold-tap reproduces the tap/hold split with the
          * original 150 ms term.
          */
-
-        td0: tap_dance_0_enter_caps {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
-            bindings = <&kp CAPS>, <&kp RET>;
-
-            flavor = "tap-preferred";
-            tapping-term-ms = <150>;
-            quick-tap-ms = <150>;
-        };
-
-        td1: tap_dance_1_quote {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <150>;
-            bindings = <&kp SQT>, <&kp DQT>;
-        };
-
-        td2: tap_dance_2_comma {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <180>;
-            bindings = <&kp COMMA>, <&kp LT>;
-        };
-
-        td3: tap_dance_3_dot {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <180>;
-            bindings = <&kp DOT>, <&kp GT>;
-        };
     };
 
     conditional_layers {
@@ -169,10 +138,10 @@
         base_layer {
             display-name = "Base";
             bindings = <
-&none     &kp Q         &kp W         &kp F                &kp P          &kp G                    &kp J  &kp L          &kp U                &kp Y         &kp SEMI      &kp GRAVE
-&kp PLUS  &kp Q         &kp W         &kp F                &kp P          &kp G                    &kp J  &kp L          &kp U                &kp Y         &kp SEMI      &td1
-&kp Z     &hm_l LGUI A  &hm_l LALT R  &hm_shift_l LSHFT S  &hm_l LCTRL T  &kp D      &kp B  &kp K  &kp H  &hm_r RCTRL N  &hm_shift_r RSHFT E  &hm_r RALT I  &hm_r RGUI O  &kp GRAVE
-&kp X     &kp C         &kp V         &lt 2 ESC            &lt 1 TAB      &kp SPACE                &td0   &lt 3 BSPC     &lt 4 DEL            &kp M         &td2          &td3
+&kp GRAVE  &kp Q             &kp W             &kp F                     &kp P          &kp G                    &kp J  &kp L          &kp U         &kp Y           &kp SEMI        &kp GRAVE
+&kp PLUS   &hm_l LEFT_WIN A  &hm_l LEFT_ALT R  &hm_shift_l LEFT_SHIFT S  &hm_l LCTRL T  &kp D                    &kp H  &kp N          &kp E         &kp I           &kp O           &kp GRAVE
+&kp EQUAL  &kp Z             &kp X             &kp C                     &kp V          &kp B      &kp B  &kp K  &kp K  &kp M          &kp COMMA     &kp DOT         &kp UP_ARROW    &kp GRAVE
+&kp MINUS  &kp C             &kp V             &hyper 2 ESC              &hyper 1 TAB   &kp SPACE                &none  &hyper 3 BSPC  &hyper 4 DEL  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
