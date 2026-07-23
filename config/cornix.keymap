@@ -151,10 +151,8 @@
             display-name = "Base";
             bindings = <
 &kp GRAVE  &kp Q             &kp W             &kp F                     &kp P            &kp G                                   &kp J                                &kp L                      &kp U                           &kp Y           &kp SEMI        &kp BSLH
-
-
 &kp PLUS   &hm_l LEFT_WIN A  &hm_l LEFT_ALT R  &hm_shift_l LEFT_SHIFT S  &hm_l LCTRL T    &kp D                                   &kp H                                &hm_r RCTRL N              &hm_shift_r RSHIFT E            &hm_r RALT I    &hm_r RGUI O    &kp GRAVE
-&kp EQUAL  &kp Z             &kp X             &kp C                     &kp V            &kp B      &enc_left_td  &enc_right_td  &kp K                                &kp M                      &kp COMMA                       &kp DOT         &kp UP_ARROW    &kp SQT
+&kp EQUAL  &kp Z             &kp X             &kp C                     &kp V            &kp B      &enc_left_td  &enc_right_td  &kp K                                &kp M                      &kp COMMA                       &kp DOT         &kp UP_ARROW    &kp SLASH
 &kp MINUS  &kp C             &kp V             &lt NUM_NAV ESC           &lt SYMBOLS TAB  &kp SPACE                               &hyper_enter LC(LA(LS(LGUI))) ENTER  &repeat_lt FUNCTIONS BSPC  &repeat_lt BLUETOOTH_MEDIA DEL  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
             >;
 
@@ -179,7 +177,7 @@
         numbers_navigation_layer {
             display-name = "Numbers/Nav";
             bindings = <
-&trans           &kp LEFT             &kp DOWN                  &kp UP                        &kp RIGHT        &kp N5                  &trans  &trans  &trans  &kp N1        &kp N2  &kp N3
+&trans           &kp LEFT             &kp DOWN                  &kp UP                        &kp RIGHT        &trans                  &trans  &trans  &trans  &kp N1        &kp N2  &kp N3
 &kp PAUSE_BREAK  &hm_l LEFT_GUI HOME  &hm_l LEFT_ALT PAGE_DOWN  &hm_shift_l LEFT_SHIFT PG_UP  &hm_l LCTRL END  &trans                  &trans  &trans  &trans  &kp N4        &kp N5  &kp N6
 &trans           &trans               &trans                    &trans                        &trans           &trans  &trans  &trans  &trans  &trans  &trans  &kp N7        &kp N8  &kp N9
 &trans           &trans               &trans                    &trans                        &trans           &trans                  &trans  &trans  &trans  &kp LS(STAR)  &kp N0  &kp LA(POUND)
