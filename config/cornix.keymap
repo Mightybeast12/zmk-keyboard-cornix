@@ -200,14 +200,12 @@
         };
 
         mouse_media_layer {
-            display-name = "Mouse/Media";
-
-            /* Vial raw 0x7c76 is unresolved and intentionally left as none. */
+            display-name = "Bluetooth/Media";
 
             bindings = <
-&none     &trans          &trans          &trans           &trans  &kp PSCRN                           &kp K_SLEEP  &trans      &trans      &trans      &trans  &tog 5
-&kp CAPS  &mkp MB1        &mmv MOVE_UP    &mkp MB2         &trans  &kp C_VOL_UP                        &trans       &trans      &kp C_PP    &trans      &trans  &trans
-&trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &kp C_MUTE    &kp C_VOL_DN  &trans  &trans       &kp C_PREV  &kp C_STOP  &kp C_NEXT  &trans  &trans
+&bt BT_CLR      &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4                          &kp K_SLEEP  &trans  &trans      &trans      &trans  &tog 5
+&bt BT_CLR_ALL  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4                         &trans       &trans  &kp C_PP    &trans      &trans  &trans
+&trans          &trans         &trans         &trans         &trans         &kp C_MUTE    &kp C_VOL_DN  &trans  &trans       &kp C_PREV  &kp C_STOP  &kp C_NEXT  &trans  &trans
 &trans    &trans          &trans          &trans           &trans  &trans                              &trans       &trans      &trans      &trans      &trans  &trans
             >;
 
