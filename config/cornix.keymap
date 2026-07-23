@@ -130,16 +130,6 @@
         };
     };
 
-    macros {
-        hyper: hyper {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none>, <&macro_press>;
-
-            label = "HYPER";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
