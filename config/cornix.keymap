@@ -177,10 +177,10 @@
         numbers_navigation_layer {
             display-name = "Numbers/Nav";
             bindings = <
-&trans           &kp N1               &kp N2                    &kp N3                        &kp N4           &kp N5                  &kp N6  &kp N7                          &kp N8                        &kp N9                    &kp N0                  &trans
-&kp PAUSE_BREAK  &hm_l LEFT_GUI HOME  &hm_l LEFT_ALT PAGE_DOWN  &hm_shift_l LEFT_SHIFT PG_UP  &hm_l LCTRL END  &trans                  &none   &hm_r RIGHT_CONTROL LEFT_ARROW  &hm_shift_r RIGHT_SHIFT DOWN  &hm_r RIGHT_ALT UP_ARROW  &hm_r RGUI RIGHT_ARROW  &trans
-&trans           &trans               &trans                    &trans                        &trans           &trans  &trans  &trans  &trans  &trans                          &trans                        &trans                    &kp UP                  &trans
-&trans           &trans               &trans                    &trans                        &trans           &trans                  &trans  &trans                          &trans                        &kp LEFT                  &kp DOWN                &kp UP
+&trans           &kp LEFT             &kp DOWN                  &kp UP                        &kp RIGHT        &kp N5                  &trans  &trans  &trans  &kp N1        &kp N2  &kp N3
+&kp PAUSE_BREAK  &hm_l LEFT_GUI HOME  &hm_l LEFT_ALT PAGE_DOWN  &hm_shift_l LEFT_SHIFT PG_UP  &hm_l LCTRL END  &trans                  &trans  &trans  &trans  &kp N4        &kp N5  &kp N6
+&trans           &trans               &trans                    &trans                        &trans           &trans  &trans  &trans  &trans  &trans  &trans  &kp N7        &kp N8  &kp N9
+&trans           &trans               &trans                    &trans                        &trans           &trans                  &trans  &trans  &trans  &kp LS(STAR)  &kp N0  &kp LA(POUND)
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
