@@ -159,7 +159,7 @@
             display-name = "Numbers/Nav";
             bindings = <
 &trans           &kp N1               &kp N2                    &kp N3                        &kp N4           &kp N5                  &kp N6  &kp N7    &kp N8    &kp N9  &kp N0     &trans
-&kp PAUSE_BREAK  &hm_l LEFT_GUI HOME  &hm_l LEFT_ALT PAGE_DOWN  &hm_shift_l LEFT_SHIFT PG_UP  &hm_l LCTRL END  &trans                  &trans  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans
+&kp PAUSE_BREAK  &hm_l LEFT_GUI HOME  &hm_l LEFT_ALT PAGE_DOWN  &hm_shift_l LEFT_SHIFT PG_UP  &hm_l LCTRL END  &trans                  &trans  &hm_r RCTRL LEFT  &hm_shift_r RSHIFT DOWN  &hm_r RALT UP  &hm_r RGUI RIGHT  &trans
 &trans           &trans               &trans                    &trans                        &trans           &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans     &trans
 &trans           &trans               &trans                    &trans                        &trans           &trans                  &trans  &trans    &trans    &trans  &trans     &trans
             >;
