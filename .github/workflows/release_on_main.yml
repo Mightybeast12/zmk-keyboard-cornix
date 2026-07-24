@@ -1,0 +1,54 @@
+name: Build & Release on main
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "boards/**"
+      - "config/**"
+      - "build.yaml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download built firmware
+        uses: actions/download-artifact@v4
+        with:
+          name: firmware
+          path: ./artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R ./artifacts
+
+      - name: Package UF2 into a zip
+        run: |
+          cd ./artifacts
+          zip zmk-keyboard-cornix-${{ github.sha }}.zip *.uf2
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./artifacts/zmk-keyboard-cornix-${{ github.sha }}.zip
+          tag_name: latest
+          name: "Latest firmware (main)"
+          make_latest: true
+          prerelease: false
+          body: |
+            Automated ZMK firmware build for commit ${{ github.sha }}.
+            Built from the latest push to `main`.
+            Download `zmk-keyboard-cornix-${{ github.sha }}.zip` below.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
