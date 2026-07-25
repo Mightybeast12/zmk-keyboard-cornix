@@ -35,6 +35,7 @@
             quick-tap-ms = <HM_QUICK_TAP>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
+            hold-trigger-on-release;
         };
 
         hm_r: homerow_mods_right {
@@ -47,6 +48,7 @@
             quick-tap-ms = <HM_QUICK_TAP>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
+            hold-trigger-on-release;
         };
 
         /* Tap Enter, hold true Hyper (Ctrl+Alt+Shift+Gui). */
