@@ -36,12 +36,12 @@ jobs:
       - name: Package UF2 into a zip
         run: |
           cd ./artifacts
-          zip zmk-keyboard-cornix-${{ github.sha }}.zip *.uf2
+          zip zmk-keyboard-cornix.zip *.uf2
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ./artifacts/zmk-keyboard-cornix-${{ github.sha }}.zip
+          files: ./artifacts/zmk-keyboard-cornix.zip
           tag_name: latest
           name: "Latest firmware (main)"
           make_latest: true
@@ -49,6 +49,6 @@ jobs:
           body: |
             Automated ZMK firmware build for commit ${{ github.sha }}.
             Built from the latest push to `main`.
-            Download `zmk-keyboard-cornix-${{ github.sha }}.zip` below.
+            Download `zmk-keyboard-cornix.zip` below.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
