@@ -145,10 +145,10 @@
         bluetooth_media_layer {
             display-name = "Bluetooth/Media";
             bindings = <
-&bt BT_CLR    &kp LG(LS(N4))  &kp LG(LS(N3))  &kp LG(SPACE)  &kp LC(UP)    &trans                      &kp K_SLEEP  &trans      &trans      &trans      &trans  &tog PLAIN
-&bt BT_SEL 0  &trans          &trans          &kp C_BRI_UP   &kp C_BRI_DN  &trans                      &trans       &trans      &kp C_PP    &trans      &trans  &trans
-&bt BT_SEL 1  &trans          &trans          &trans         &trans        &kp C_MUTE  &trans  &trans  &trans       &kp C_PREV  &kp C_STOP  &kp C_NEXT  &trans  &trans
-&bt BT_SEL 2  &trans          &trans          &trans         &trans        &trans                      &trans       &trans      &trans      &trans      &trans  &trans
+&bt BT_CLR    &trans  &trans  &kp LS(LG(N3))  &kp LG(LS(NUMBER_4))  &trans                      &kp K_SLEEP  &trans      &trans      &trans      &trans  &tog PLAIN
+&bt BT_SEL 0  &trans  &trans  &kp C_BRI_UP    &kp C_BRI_DN          &trans                      &trans       &trans      &kp C_PP    &trans      &trans  &trans
+&bt BT_SEL 1  &trans  &trans  &trans          &trans                &kp C_MUTE  &trans  &trans  &trans       &kp C_PREV  &kp C_STOP  &kp C_NEXT  &trans  &trans
+&bt BT_SEL 2  &trans  &trans  &trans          &trans                &trans                      &trans       &trans      &trans      &trans      &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
