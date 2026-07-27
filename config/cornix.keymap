@@ -14,11 +14,11 @@
 #define HM_QUICK_TAP 175
 #define HM_PRIOR_IDLE 150
 #define BASE 0
-#define SYMBOLS 1
-#define NUM_NAV 2
-#define FUNCTIONS 3
-#define BLUETOOTH_MEDIA 4
-#define QWERTY 5
+#define QWERTY 1
+#define SYMBOLS 2
+#define NUM_NAV 3
+#define FUNCTIONS 4
+#define BLUETOOTH_MEDIA 5
 #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 30 38 39 40
 #define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 31 32 33 34 35 36 37 47 48 49
 #define THUMBS 41 42 43 44 45 46
@@ -100,6 +100,28 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
+        qwerty_layer {
+            display-name = "QWERTY";
+
+            /*
+             * QWERTY alpha overlay (layer 1, right above base). Only the 30
+             * letter keys are redefined; every thumb and outer key is &trans
+             * so it falls through to the base layer. Because this layer sits
+             * BELOW the functional layers, momentarily holding a thumb for
+             * Symbols/Num-Nav/Functions/BT activates a higher layer that wins,
+             * so those layers work identically in QWERTY mode.
+             */
+
+            bindings = <
+&trans  &kp Q             &kp W             &kp E               &kp R            &kp T                            &kp Y   &kp U             &kp I               &kp O           &kp P           &trans
+&trans  &hm_l LEFT_GUI A  &hm_l LEFT_ALT S  &hm_l LEFT_SHIFT D  &hm_l LCTRL F    &kp G                            &kp H   &hm_r RCTRL J     &hm_r RSHIFT K      &hm_r RALT L    &hm_r RGUI SEMI &trans
+&trans  &kp Z             &kp X             &kp C               &kp V            &kp B      &trans      &trans    &kp N   &kp M             &kp COMMA           &kp DOT         &trans          &trans
+&trans  &trans            &trans            &trans              &trans           &trans                           &trans  &trans            &trans              &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
         symbols_layer {
             display-name = "Symbols";
 
@@ -149,26 +171,6 @@
 &bt BT_SEL 0  &trans          &trans          &kp C_BRI_UP   &kp C_BRI_DN  &trans                      &trans       &trans      &kp C_PP    &trans      &trans  &trans
 &bt BT_SEL 1  &trans          &trans          &trans         &trans        &kp C_MUTE  &trans  &trans  &trans       &kp C_PREV  &kp C_STOP  &kp C_NEXT  &trans  &trans
 &bt BT_SEL 2  &trans          &trans          &trans         &trans        &trans                      &trans       &trans      &trans      &trans      &trans  &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        qwerty_layer {
-            display-name = "QWERTY";
-
-            /*
-             * QWERTY alpha overlay. Only the 30 letter keys are redefined;
-             * every thumb and outer key is &trans so it falls through to the
-             * base layer. This keeps Symbols, Num/Nav, Functions, home-row
-             * mods, arrows, and the encoder identical to Colemak.
-             */
-
-            bindings = <
-&trans  &kp Q             &kp W             &kp E               &kp R            &kp T                            &kp Y   &kp U             &kp I               &kp O           &kp P           &trans
-&trans  &hm_l LEFT_GUI A  &hm_l LEFT_ALT S  &hm_l LEFT_SHIFT D  &hm_l LCTRL F    &kp G                            &kp H   &hm_r RCTRL J     &hm_r RSHIFT K      &hm_r RALT L    &hm_r RGUI SEMI &trans
-&trans  &kp Z             &kp X             &kp C               &kp V            &kp B      &trans      &trans    &kp N   &kp M             &kp COMMA           &kp DOT         &trans          &trans
-&trans  &trans            &trans            &trans              &trans           &trans                           &trans  &trans            &trans              &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
