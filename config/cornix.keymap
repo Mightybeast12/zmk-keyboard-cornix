@@ -85,6 +85,22 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        /* Functions + top-left/top-right corners together resets the
+         * central device (the dongle) into bootloader mode, since combo
+         * reset bindings always target the split-central side. The direct
+         * &bootloader keys at these same positions only reset whichever
+         * half's physical key was pressed. */
+        combo_dongle_bootloader {
+            timeout-ms = <50>;
+            key-positions = <0 11>;
+            bindings = <&bootloader>;
+            layers = <FUNCTIONS>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
