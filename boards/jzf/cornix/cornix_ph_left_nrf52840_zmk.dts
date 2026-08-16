@@ -1,9 +1,1 @@
-/*
- * Copyright (c) 2020 Pete Johanson
- *
- * SPDX-License-Identifier: MIT
- */
-
-/dts-v1/;
-#include "cornix_left_common.dtsi"
-// vim: set ft=dts:
+#include "cornix_ph_left.dts"
