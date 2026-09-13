@@ -14,7 +14,7 @@
 #define HM_QUICK_TAP 175
 #define HM_PRIOR_IDLE 150
 #define BASE 0
-#define QWERTY 1
+#define COLEMAK 1
 #define SYMBOLS 2
 #define NUM_NAV 3
 #define FUNCTIONS 4
@@ -107,32 +107,32 @@
         base_layer {
             display-name = "Base";
             bindings = <
-&kp PLUS   &kp Q             &kp W             &kp F               &kp P            &kp G                            &kp J                                &kp L                      &kp U                           &kp Y           &kp SEMI        &kp BSLH
-&kp EQUAL  &hm_l LEFT_GUI A  &hm_l LEFT_ALT R  &hm_l LEFT_SHIFT S  &hm_l LCTRL T    &kp D                            &kp H                                &hm_r RCTRL N              &hm_r RSHIFT E                  &hm_r RALT I    &hm_r RGUI O    &kp SINGLE_QUOTE
-&kp MINUS  &kp Z             &kp X             &kp C               &kp V            &kp B      &kp C_MUTE  &kp C_PP  &kp K                                &kp M                      &kp COMMA                       &kp DOT         &kp UP_ARROW    &kp SLASH
-&kp GRAVE  &kp LG(C)         &kp LG(V)         &lt NUM_NAV ESC     &lt SYMBOLS TAB  &kp SPACE                        &hyper_enter LC(LA(LS(LGUI))) ENTER  &repeat_lt FUNCTIONS BSPC  &repeat_lt BLUETOOTH_MEDIA DEL  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
+&kp PLUS   &kp Q             &kp W             &kp E               &kp R            &kp T                            &kp Y                                &kp U                      &kp I                           &kp O           &kp P            &kp BSLH
+&kp EQUAL  &hm_l LEFT_GUI A  &hm_l LEFT_ALT S  &hm_l LEFT_SHIFT D  &hm_l LCTRL F    &kp G                            &kp H                                &hm_r RCTRL J              &hm_r RSHIFT K                  &hm_r RALT L    &hm_r RGUI SEMI  &kp SINGLE_QUOTE
+&kp MINUS  &kp Z             &kp X             &kp C               &kp V            &kp B      &kp C_MUTE  &kp C_PP  &kp N                                &kp M                      &kp COMMA                       &kp DOT         &kp UP_ARROW     &kp SLASH
+&kp GRAVE  &kp LG(C)         &kp LG(V)         &lt NUM_NAV ESC     &lt SYMBOLS TAB  &kp SPACE                        &hyper_enter LC(LA(LS(LGUI))) ENTER  &repeat_lt FUNCTIONS BSPC  &repeat_lt BLUETOOTH_MEDIA DEL  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        qwerty_layer {
-            display-name = "QWERTY";
+        colemak_layer {
+            display-name = "Colemak";
 
             /*
-             * QWERTY alpha overlay (layer 1, right above base). Only the 30
+             * Colemak-DH alpha overlay (layer 1, right above base). Only the
              * letter keys are redefined; every thumb and outer key is &trans
              * so it falls through to the base layer. Because this layer sits
              * BELOW the functional layers, momentarily holding a thumb for
              * Symbols/Num-Nav/Functions/BT activates a higher layer that wins,
-             * so those layers work identically in QWERTY mode.
+             * so those layers work identically in Colemak mode.
              */
 
             bindings = <
-&trans  &kp Q             &kp W             &kp E               &kp R          &kp T                   &kp Y   &kp U          &kp I           &kp O         &kp P            &trans
-&trans  &hm_l LEFT_GUI A  &hm_l LEFT_ALT S  &hm_l LEFT_SHIFT D  &hm_l LCTRL F  &kp G                   &kp H   &hm_r RCTRL J  &hm_r RSHIFT K  &hm_r RALT L  &hm_r RGUI SEMI  &trans
-&trans  &kp Z             &kp X             &kp C               &kp V          &kp B   &trans  &trans  &kp N   &kp M          &kp COMMA       &kp DOT       &trans           &trans
-&trans  &trans            &trans            &trans              &trans         &trans                  &trans  &trans         &trans          &trans        &trans           &trans
+&trans  &kp Q             &kp W             &kp F               &kp P          &kp G                   &kp J   &kp L          &kp U           &kp Y         &kp SEMI      &trans
+&trans  &hm_l LEFT_GUI A  &hm_l LEFT_ALT R  &hm_l LEFT_SHIFT S  &hm_l LCTRL T  &kp D                   &kp H   &hm_r RCTRL N  &hm_r RSHIFT E  &hm_r RALT I  &hm_r RGUI O  &trans
+&trans  &kp Z             &kp X             &kp C               &kp V          &kp B   &trans  &trans  &kp K   &kp M          &kp COMMA       &kp DOT       &trans        &trans
+&trans  &trans            &trans            &trans              &trans         &trans                  &trans  &trans         &trans          &trans        &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -183,7 +183,7 @@
         bluetooth_media_layer {
             display-name = "Bluetooth/Media";
             bindings = <
-&bt BT_CLR    &trans  &trans  &kp LG(LS(NUMBER_3))  &kp LC(LS(NUMBER_4))  &trans                      &kp K_SLEEP  &trans      &trans      &trans      &trans  &tog QWERTY
+&bt BT_CLR    &trans  &trans  &kp LG(LS(NUMBER_3))  &kp LC(LS(NUMBER_4))  &trans                      &kp K_SLEEP  &trans      &trans      &trans      &trans  &tog COLEMAK
 &bt BT_SEL 0  &trans  &trans  &kp C_BRI_UP          &kp C_BRI_DN          &trans                      &trans       &trans      &kp C_PP    &trans      &trans  &trans
 &bt BT_SEL 1  &trans  &trans  &trans                &trans                &kp C_MUTE  &trans  &trans  &trans       &kp C_PREV  &kp C_STOP  &kp C_NEXT  &trans  &trans
 &bt BT_SEL 2  &trans  &trans  &trans                &trans                &trans                      &trans       &trans      &trans      &trans      &trans  &trans
